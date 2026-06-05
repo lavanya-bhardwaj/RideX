@@ -5,15 +5,15 @@
 }
 
 body {
-    background-color: #0a0a0a;
+    background-color: #000000;
     color: #ffffff;
     font-family: 'Inter', sans-serif;
 }
 
 /* Navbar */
 .navbar {
-    background-color: rgba(10, 10, 10, 0.95);
-    border-bottom: 1px solid #222;
+    background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 100%);
+    border-bottom: none;
     padding: 15px 0;
 }
 
@@ -29,7 +29,7 @@ body {
 }
 
 .nav-link {
-    color: #aaaaaa !important;
+    color: #ffffff !important;
     margin-left: 20px;
     font-weight: 600;
     transition: color 0.3s ease;
@@ -42,10 +42,35 @@ body {
 /* Hero Section */
 .hero {
     min-height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
     display: flex;
     align-items: center;
     padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 200px;        /* ← push this higher to move image right */
+    width: 100%;
+    height: 100%;
+    background: url('/static/images/hero_bg.jpg') center center / cover no-repeat;
+    z-index: 0;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.25);
+    z-index: 1;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
 }
 .hero-tagline{
     color: #e63946;
