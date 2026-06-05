@@ -38,5 +38,40 @@ class Booking(db.Model):
 with app.app_context():
     db.create_all()
 
+@app.route('/seed')
+def seed():
+    bikes = [
+        Bike(name='Royal Enfield Classic 350', engine_cc=350, price_per_day=1500.0, is_available=True),
+        Bike(name='Royal Enfield Himalayan', engine_cc=411, price_per_day=2000.0, is_available=True),
+        Bike(name='Bajaj Pulsar NS200', engine_cc=200, price_per_day=1200.0, is_available=True),
+        Bike(name='TVS Apache RTR 160', engine_cc=160, price_per_day=1000.0, is_available=True)
+    ]
+    db.session.add_all(bikes)
+    db.session.commit()
+    return 'Bikes added!'
+
+@app.route('/check')
+def check():
+    all_bikes = Bike.query.all()
+    return str([(b.id, b.name) for b in all_bikes])
+
+@app.route('/bikes')
+def bikes():
+    all_bikes = Bike.query.all()
+    return render_template('bikes.html', bikes=all_bikes)
+
+@app.route('/reseed')
+def reseed():
+    Bike.query.delete()
+    bikes = [
+        Bike(name='Royal Enfield Classic 350', engine_cc=350, price_per_day=1500, is_available=True, image_file='royal_enfield_classic_350.jpg'),
+        Bike(name='Royal Enfield Himalayan', engine_cc=411, price_per_day=2000, is_available=True, image_file='royal_enfield_himalayan.jpg'),
+        Bike(name='Bajaj Pulsar NS200', engine_cc=200, price_per_day=1000, is_available=True, image_file='bajaj_pulsar_ns200.jpg'),
+        Bike(name='Yamaha MT-15', engine_cc=155, price_per_day=1200, is_available=True, image_file='yamaha_mt-15.jpg'),
+        Bike(name='TVS Apache RTR 160', engine_cc=160, price_per_day=900, is_available=True, image_file='tvs_apache_rtr_160.jpg'),
+    ]
+    db.session.add_all(bikes)
+    db.session.commit()
+    return 'Done!'
 if __name__ == '__main__':
     app.run(debug=True)

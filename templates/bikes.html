@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class = "bikes-section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Our Fleet</h2>
+        <p class="section-sub" data-aos="fade-up" data-aos-delay="100">Choose your perfect ride</p>
+        <div class="row mt-5">
+            {% for bike in bikes %}
+            <div class="col-md-4 mb-4" data-aos="fade-up">
+                <div class="bike-card">
+                    <div class="bike-img-placeholder">
+                        <img src="{{ url_for('static', filename='images/' + bike.image_file) }}" alt="{{ bike.name }}" class="bike-img">
+                    </div>
+                    <div class="bike-info">
+                        <h3 class="bike-name">{{ bike.name }}</h3>
+                        <p class="bike-cc">{{ bike.engine_cc }} CC</p>
+                        <p class="bike-price">₹{{ bike.price_per_day }} / day</p>
+                        <span class="badge {{ 'available' if bike.is_available else 'rented' }}">
+                            {{ 'Available' if bike.is_available else 'Rented' }}
+                        </span>
+                        <a href='#' class="btn-primary-red mt-3 d-block text-center">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+</section>
+{% endblock %}
