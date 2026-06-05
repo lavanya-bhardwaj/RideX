@@ -73,5 +73,10 @@ def reseed():
     db.session.add_all(bikes)
     db.session.commit()
     return 'Done!'
+
+@app.route('/bikes/<int:bike_id>')
+def bike_detail(bike_id):
+    bike = Bike.query.get_or_404(bike_id)
+    return render_template('bike_detail.html', bike=bike)
 if __name__ == '__main__':
     app.run(debug=True)

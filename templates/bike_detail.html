@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="bike-detail-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6" data-aos="fade-right">
+                <img src="{{ url_for('static', filename='images/' + bike.image_file) }}" 
+                     alt="{{ bike.name }}" class="detail-img">
+            </div>
+            <div class="col-md-6" data-aos="fade-left">
+                <p class="hero-tagline">COIMBATORE BIKE RENTALS</p>
+                <h1 class="detail-name">{{ bike.name }}</h1>
+                <p class="bike-cc">{{ bike.engine_cc }}cc Engine</p>
+                <p class="detail-price">₹{{ bike.price_per_day }}<span>/day</span></p>
+                <span class="badge {{ 'available' if bike.is_available else 'rented' }}">
+                    {{ 'Available' if bike.is_available else 'Rented Out' }}
+                </span>
+
+                <div class="detail-specs mt-4">
+                    <div class="spec-item">
+                        <span class="spec-label">Engine</span>
+                        <span class="spec-value">{{ bike.engine_cc }}cc</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Price</span>
+                        <span class="spec-value">₹{{ bike.price_per_day }}/day</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Status</span>
+                        <span class="spec-value">{{ 'Available' if bike.is_available else 'Rented Out' }}</span>
+                    </div>
+                </div>
+                <a href="#" class="btn-primary-red mt-4 d-inline-block">
+                    Book This Bike →
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

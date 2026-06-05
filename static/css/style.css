@@ -161,3 +161,53 @@ body {
     border-radius: 8px;
     margin-bottom: 15px;
 }
+
+.bike-detail-section {
+    padding-top: 120px;
+    padding-bottom: 60px;
+}
+
+.detail-img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.detail-name {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin: 15px 0;
+}
+
+.detail-price {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #e63946;
+    margin: 15px 0;
+}
+
+.detail-price span {
+    font-size: 1rem;
+    color: #aaaaaa;
+}
+
+.detail-specs {
+    border-top: 1px solid #222;
+    padding-top: 20px;
+}
+
+.spec-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #222;
+}
+
+.spec-label {
+    color: #aaaaaa;
+}
+
+.spec-value {
+    font-weight: 600;
+    color: #ffffff;
+}

@@ -19,7 +19,7 @@
                         <span class="badge {{ 'available' if bike.is_available else 'rented' }}">
                             {{ 'Available' if bike.is_available else 'Rented' }}
                         </span>
-                        <a href='#' class="btn-primary-red mt-3 d-block text-center">Book Now</a>
+                        <a href='{{ url_for("bike_detail", bike_id=bike.id) }}' class="btn-primary-red mt-3 d-block text-center">View Details</a>
                     </div>
                 </div>
             </div>
