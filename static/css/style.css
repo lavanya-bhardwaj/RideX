@@ -236,3 +236,96 @@ body {
     font-weight: 600;
     color: #ffffff;
 }
+
+.booking-section {
+    padding-top: 120px;
+    padding-bottom: 60px;
+}
+
+.booking-form {
+    background-color: #111111;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 40px;
+    margin-top: 30px;
+}
+
+.form-label {
+    color: #aaaaaa;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.dark-input {
+    background-color: #1a1a1a !important;
+    border: 1px solid #333 !important;
+    color: #ffffff !important;
+    padding: 12px 16px;
+    border-radius: 8px;
+}
+
+.dark-input:focus {
+    border-color: #e63946 !important;
+    box-shadow: 0 0 0 0.2rem rgba(230, 57, 70, 0.15) !important;
+    background-color: #1a1a1a !important;
+}
+
+.dark-input::placeholder {
+    color: #555 !important;
+}
+
+.booking-bike-img {
+    width: 100%;
+    border-radius: 12px;
+    position: sticky;
+    top: 120px;
+}
+
+.confirmation-section {
+    padding-top: 150px;
+    padding-bottom: 60px;
+}
+
+.confirmation-box {
+    background-color: #111111;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 60px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.check-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #e63946;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 30px;
+    color: white;
+}
+
+.login-section {
+    padding-top: 150px;
+    padding-bottom: 60px;
+}
+
+.login-box {
+    background-color: #111111;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 50px 40px;
+}
+
+.alert-error {
+    background-color: rgba(230, 57, 70, 0.15);
+    border: 1px solid #e63946;
+    color: #e63946;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}

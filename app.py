@@ -1,10 +1,46 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for, session, flash
+from datetime import datetime
+from functools import wraps
+
 
 app = Flask(__name__)
+app.secret_key = 'cbr_admin_secret_2026'
+ADMIN_USERNAME = 'admin'
+ADMIN_PASSWORD = 'cbr2026'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///bikes.db'
 db = SQLAlchemy(app)
+
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'admin_logged_in' not in session:
+            return redirect(url_for('admin_login'))
+        return f(*args, **kwargs)
+    return decorated_function
+
+@app.route('/admin/login', methods=['GET', 'POST'])
+def admin_login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
+            session['admin_logged_in'] = True
+            return redirect(url_for('admin_dashboard'))
+        else:
+            flash('Invalid credentials. Try again.')
+    return render_template('admin/login.html')
+
+@app.route('/admin/dashboard')
+@login_required
+def admin_dashboard():
+    return 'Dashboard coming soon!'
+
+@app.route('/admin/logout')
+def admin_logout():
+    session.pop('admin_logged_in', None)
+    return redirect(url_for('admin_login'))
 
 @app.route('/')
 def index():
@@ -78,5 +114,25 @@ def reseed():
 def bike_detail(bike_id):
     bike = Bike.query.get_or_404(bike_id)
     return render_template('bike_detail.html', bike=bike)
+
+@app.route('/book/<int:bike_id>', methods=['GET', 'POST'])
+def booking(bike_id):
+    bike = Bike.query.get_or_404(bike_id)
+    if request.method == 'POST':
+        new_booking = Booking(
+            bike_id=bike.id,
+            customer_name=request.form['customer_name'],
+            customer_phone=request.form['customer_phone'],
+            booking_date=datetime.strptime(request.form['booking_date'], '%Y-%m-%d'),
+            status='pending'
+        )
+        db.session.add(new_booking)
+        db.session.commit()
+        return redirect(url_for('confirmation'))
+    return render_template('booking.html', bike=bike)
+@app.route('/confirmation')
+def confirmation():
+    return render_template('confirmation.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

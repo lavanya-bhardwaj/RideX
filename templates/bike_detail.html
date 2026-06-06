@@ -31,8 +31,8 @@
                         <span class="spec-value">{{ 'Available' if bike.is_available else 'Rented Out' }}</span>
                     </div>
                 </div>
-                <a href="#" class="btn-primary-red mt-4 d-inline-block">
-                    Book This Bike →
+                <a href="{{ url_for('booking', bike_id=bike.id) }}" class="btn-primary-red mt-4 d-inline-block">
+                    Book Now →
                 </a>
             </div>
         </div>
