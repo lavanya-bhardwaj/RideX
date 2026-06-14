@@ -54,7 +54,8 @@ def admin_logout():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    all_bikes = Bike.query.all()
+    return render_template('index.html', bikes=all_bikes)
 
 class Bike(db.Model):
     id = db.Column(db.Integer, primary_key=True)

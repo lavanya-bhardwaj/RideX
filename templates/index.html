@@ -16,8 +16,68 @@
                 <span class="line-freedom">FREEDOM.</span>
             </h1>
             <p class="hero-sub">Premium motorbikes for every adventure.</p>
-            <a href="{{ url_for('bikes') }}" class="btn-primary-red">Explore Bikes
-            </a>
+            <a href="{{ url_for('bikes') }}" class="btn-primary-red">Explore Bikes</a>
+        </div>
+    </div>
+</section>
+
+<!-- Fleet Section -->
+<section class="fleet-section" data-aos="fade-up">
+    <div class="fleet-header">
+        <p class="hero-tagline">OUR FLEET</p>
+        <h2 class="fleet-title">CHOOSE YOUR <span>RIDE.</span></h2>
+    </div>
+    <div class="fleet-wrapper">
+        <button class="fleet-arrow left" onclick="scrollFleet(-1)">&#8592;</button>
+        <div class="fleet-track" id="fleetTrack">
+            {% for bike in bikes %}
+            <div class="fleet-card">
+                <img src="{{ url_for('static', filename='images/' + bike.image_file) }}" alt="{{ bike.name }}">
+                <div class="fleet-card-info">
+                    <h3>{{ bike.name }}</h3>
+                    <p class="bike-cc">{{ bike.engine_cc }} CC</p>
+                    <p class="bike-price">₹{{ bike.price_per_day }} / day</p>
+                    <a href="{{ url_for('bike_detail', bike_id=bike.id) }}" class="btn-primary-red mt-2 d-block text-center">View Details</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <button class="fleet-arrow right" onclick="scrollFleet(1)">&#8594;</button>
+    </div>
+</section>
+<!-- Why RideX Section -->
+<section class="why-section" data-aos="fade-up">
+    <div class="why-inner">
+        <div class="why-left">
+            <p class="hero-tagline">WHY RIDEX?</p>
+            <h2 class="why-title">IT'S MORE THAN <br> A RENTAL. <br> <span>IT'S A LIFESTYLE.</span></h2>
+        </div>
+        <div class="why-cards">
+            <div class="why-card">
+                <div class="why-icon"><i class="bi bi-currency-dollar why-icon"></i></div>
+                <h4>No Hidden Fees</h4>
+                <p>What you see is what you pay. Always.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon"><i class="bi bi-shield-check why-icon"></i></div>
+                <h4>Fully Insured</h4>
+                <p>Every ride covered, every time.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon"><i class="bi bi-infinity why-icon"></i></div>
+                <h4>Unlimited KM</h4>
+                <p>Ride as far as the road takes you.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon"><i class="bi bi-person-check why-icon"></i></div>
+                <h4>Premium Gear</h4>
+                <p>Helmets and gear included with every rental.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon"><i class="bi bi-tools why-icon"></i></div>
+                <h4>Roadside Assist</h4>
+                <p>24/7 support wherever you are.</p>
+            </div>
         </div>
     </div>
 </section>
