@@ -19,7 +19,6 @@ def login_required(f):
             return redirect(url_for('admin_login'))
         return f(*args, **kwargs)
     return decorated_function
-
 @app.route('/admin/login', methods=['GET', 'POST'])
 def admin_login():
     if request.method == 'POST':
@@ -35,7 +34,18 @@ def admin_login():
 @app.route('/admin/dashboard')
 @login_required
 def admin_dashboard():
-    return 'Dashboard coming soon!'
+    total_bikes = Bike.query.count()
+    available_bikes = Bike.query.filter_by(is_available=True).count()
+    rented_bikes = Bike.query.filter_by(is_available=False).count()
+    pending_bookings = Booking.query.filter_by(status='pending').count()
+    recent_bookings = Booking.query.order_by(Booking.id.desc()).limit(5).all()
+    return render_template('admin/dashboard.html',
+        total_bikes=total_bikes,
+        available_bikes=available_bikes,
+        rented_bikes=rented_bikes,
+        pending_bookings=pending_bookings,
+        recent_bookings=recent_bookings
+    )
 
 @app.route('/admin/logout')
 def admin_logout():

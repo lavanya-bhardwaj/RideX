@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="admin-dashboard-section">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="stat-card">
+                <p class="stat-label">Total Bikes</p>
+                <h2 class="stat-number">{{ total_bikes }}</h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="stat-card">
+                <p class="stat-label">Available Bikes</p>
+                <h2 class="stat-number">{{ available_bikes }}</h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="stat-card">
+                <p class="stat-label">Rented Bikes</p>
+                <h2 class="stat-number">{{ rented_bikes }}</h2>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

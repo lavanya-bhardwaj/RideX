@@ -3,12 +3,21 @@
 {% block content %}
 <!-- Hero Section -->
 <section class="hero">
+    <img src="{{ url_for('static', filename='images/hero_bg.jpg') }}" class="hero-bg" alt="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-fade"></div>
+    <div class="hero-fade-right"></div>
     <div class="container">
         <div class="hero-text">
             <p class="hero-tagline">DISCOVER FREEDOM ON TWO WHEELS</p>
-            <h1>RENT THE RIDE.<br><span>LIVE THE JOURNEY.</span></h1>
-            <p class="hero-sub">Premium motorbikes for every adventure in Coimbatore.</p>
-            <a href="/bikes" class="btn-primary-red">Explore Bikes -></a>
+            <h1>
+                <div>FUEL</div>
+                <div>YOUR</div>
+                <span class="line-freedom">FREEDOM.</span>
+            </h1>
+            <p class="hero-sub">Premium motorbikes for every adventure.</p>
+            <a href="{{ url_for('bikes') }}" class="btn-primary-red">Explore Bikes
+            </a>
         </div>
     </div>
 </section>
