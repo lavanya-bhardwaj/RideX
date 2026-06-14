@@ -26,6 +26,65 @@ function scrollFleet(direction) {
     track.scrollBy({ left: direction * 400, behavior: 'smooth' });
 }
 </script>
+<!-- Custom Cursor -->
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<script>
+    const dot = document.querySelector('.cursor-dot');
+    const ring = document.querySelector('.cursor-ring');
+    const trail = [];
+    const trailCount = 8;
+
+    // Create trail dots
+    for (let i = 0; i < trailCount; i++) {
+        const t = document.createElement('div');
+        t.classList.add('cursor-trail');
+        t.style.opacity = (1 - i / trailCount) * 0.4;
+        t.style.width = t.style.height = `${6 - i * 0.5}px`;
+        document.body.appendChild(t);
+        trail.push({ el: t, x: 0, y: 0 });
+    }
+
+    let mouseX = 0, mouseY = 0;
+    let ringX = 0, ringY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        dot.style.left = mouseX + 'px';
+        dot.style.top = mouseY + 'px';
+
+        // Shift trail positions
+        for (let i = trail.length - 1; i > 0; i--) {
+            trail[i].x = trail[i - 1].x;
+            trail[i].y = trail[i - 1].y;
+            trail[i].el.style.left = trail[i].x + 'px';
+            trail[i].el.style.top = trail[i].y + 'px';
+        }
+        trail[0].x = mouseX;
+        trail[0].y = mouseY;
+        trail[0].el.style.left = mouseX + 'px';
+        trail[0].el.style.top = mouseY + 'px';
+    });
+
+    // Ring follows with delay
+    function animateRing() {
+        ringX += (mouseX - ringX) * 0.12;
+        ringY += (mouseY - ringY) * 0.12;
+        ring.style.left = ringX + 'px';
+        ring.style.top = ringY + 'px';
+        requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    // Grow ring on hover
+    document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => ring.classList.add('ring-hover'));
+        el.addEventListener('mouseleave', () => ring.classList.remove('ring-hover'));
+    });
+</script>
 <body>
 
     <!-- Navbar -->

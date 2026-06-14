@@ -9,12 +9,53 @@ body {
     color: #ffffff;
     font-family: 'Inter', sans-serif;
 }
+* {
+    cursor: none;
+}
 
+.cursor-dot {
+    width: 6px;
+    height: 6px;
+    background: #e63946;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+}
+
+.cursor-ring {
+    width: 30px;
+    height: 30px;
+    border: 1.5px solid rgba(230, 57, 70, 0.6);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, border-color 0.2s;
+}
+
+.cursor-ring.ring-hover {
+    width: 50px;
+    height: 50px;
+    border-color: #e63946;
+}
+
+.cursor-trail {
+    background: #e63946;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9997;
+    transform: translate(-50%, -50%);
+}
 /* Navbar */
 .navbar {
-    background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 100%);
-    border-bottom: none;
+    background: rgba(0, 0, 0, 0.75) !important;
+    border-bottom: 1px solid #1a1a1a;
     padding: 15px 0;
+    backdrop-filter: blur(30px);
 }
 
 .navbar-brand {
@@ -428,6 +469,81 @@ body {
 
 .how-cta h3 span {
     color: #e63946;
+}
+
+.contact-section {
+    background: #ef1527;
+    padding: 80px 120px;
+}
+
+.contact-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 60px;
+}
+
+.contact-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 15px;
+}
+
+.contact-title {
+    font-size: 2.8rem;
+    font-weight: 900;
+    font-style: italic;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 15px;
+}
+
+.contact-title span {
+    color: #000;
+}
+
+.contact-sub {
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+}
+
+.contact-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    color: #fff;
+}
+
+.contact-item i {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    margin-top: 4px;
+    color: rgba(255,255,255,0.8);
+}
+
+.contact-label {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 4px;
+    font-weight: 700;
+}
+
+.contact-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
 }
 
 .btn-text {
