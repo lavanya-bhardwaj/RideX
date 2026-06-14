@@ -3,7 +3,9 @@
 {% block content %}
 <!-- Hero Section -->
 <section class="hero">
-    <img src="{{ url_for('static', filename='images/hero_bg.jpg') }}" class="hero-bg" alt="hero">
+    <video class="hero-bg" autoplay muted loop playsinline>
+        <source src="{{ url_for('static', filename='videos/hero_bg_final.mp4') }}" type="video/mp4">
+    </video>
     <div class="hero-glow"></div>
     <div class="hero-fade"></div>
     <div class="hero-fade-right"></div>
@@ -78,6 +80,45 @@
                 <h4>Roadside Assist</h4>
                 <p>24/7 support wherever you are.</p>
             </div>
+        </div>
+    </div>
+</section>
+<!-- How It Works Section -->
+<section class="how-section" data-aos="fade-up">
+    <div class="how-inner">
+        <div class="how-title-block">
+            <p class="hero-tagline">SIMPLE. FAST. 3 STEPS.</p>
+            <h2 class="how-title">HOW IT <br><span>WORKS.</span></h2>
+        </div>
+
+        <div class="how-steps">
+            <div class="how-step-card">
+                <i class="bi bi-search step-icon"></i>
+                <span class="step-num">01</span>
+                <h4>Choose Your Bike</h4>
+                <p>Browse our fleet and pick the ride that matches your vibe.</p>
+            </div>
+            <div class="how-arrow">→</div>
+            <div class="how-step-card">
+                <i class="bi bi-calendar-check step-icon"></i>
+                <span class="step-num">02</span>
+                <h4>Select Dates & Location</h4>
+                <p>Pick your pickup date and we'll have it ready for you.</p>
+            </div>
+            <div class="how-arrow">→</div>
+            <div class="how-step-card">
+                <i class="bi bi-flag-fill step-icon"></i>
+                <span class="step-num">03</span>
+                <h4>Get Your Ride</h4>
+                <p>Show up, gear up, and hit the road.</p>
+            </div>
+        </div>
+
+        <div class="how-divider"></div>
+
+        <div class="how-cta">
+            <h3>READY TO <br>RIDE?<br>BOOK NOW AND GET<br><span>10% OFF YOUR<br>FIRST RENTAL.</span></h3>
+            <a href="/book/1" class="btn-primary-red mt-4 d-inline-block">Book Now →</a>
         </div>
     </div>
 </section>
