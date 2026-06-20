@@ -21,6 +21,14 @@
                             <label class="form-label">Booking Date</label>
                             <input type="date" name="booking_date" class="form-control dark-input" value="{{ booking.booking_date.strftime('%Y-%m-%d') }}" required>
                         </div>
+                        <div class="mb-4">
+                            <label class="form-label">Status</label>
+                            <select name="status" class="form-control dark-input">
+                                <option value="pending" {% if booking.status == 'pending' %}selected{% endif %}>Pending</option>
+                                <option value="approved" {% if booking.status == 'approved' %}selected{% endif %}>Approved</option>
+                                <option value="rejected" {% if booking.status == 'rejected' %}selected{% endif %}>Rejected</option>
+                            </select>
+                        </div>
                         <button type="submit" class="btn-primary-red w-100 py-3">Save Changes →</button>
                     </form>
                 </div>

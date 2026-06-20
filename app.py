@@ -87,6 +87,7 @@ def edit_booking(booking_id):
         booking.customer_name = request.form['customer_name']
         booking.customer_phone = request.form['customer_phone']
         booking.booking_date = datetime.strptime(request.form['booking_date'], '%Y-%m-%d')
+        booking.status = request.form['status']
         db.session.commit()
         flash('Booking updated.')
         return redirect(url_for('admin_dashboard'))
