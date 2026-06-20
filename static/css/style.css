@@ -811,7 +811,74 @@ body {
     font-size: 3rem;
     font-weight: 900;
 }
+.admin-table-wrapper {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 12px;
+    overflow: hidden;
+}
 
-.admin-dashboard-section {
-    padding-top: 80px;
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    background: #1a1a1a;
+    color: #aaa;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.admin-table td {
+    padding: 16px 20px;
+    border-top: 1px solid #1a1a1a;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.status-badge.pending {
+    background: rgba(244, 162, 97, 0.15);
+    color: #f4a261;
+}
+
+.status-badge.approved {
+    background: rgba(42, 157, 143, 0.15);
+    color: #2a9d8f;
+}
+
+.status-badge.rejected {
+    background: rgba(230, 57, 70, 0.15);
+    color: #e63946;
+}
+
+.action-btn {
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    margin-right: 6px;
+}
+
+.action-btn.approve {
+    background: rgba(42, 157, 143, 0.15);
+    color: #2a9d8f;
+    border: 1px solid #2a9d8f;
+}
+
+.action-btn.reject {
+    background: rgba(230, 57, 70, 0.15);
+    color: #e63946;
+    border: 1px solid #e63946;
 }

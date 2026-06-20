@@ -52,6 +52,24 @@ def admin_logout():
     session.pop('admin_logged_in', None)
     return redirect(url_for('admin_login'))
 
+@app.route('/admin/booking/<int:booking_id>/approve')
+@login_required
+def approve_booking(booking_id):
+    booking = Booking.query.get_or_404(booking_id)
+    booking.status = 'approved'
+    db.session.commit()
+    flash('Booking approved.')
+    return redirect(url_for('admin_dashboard'))
+
+@app.route('/admin/booking/<int:booking_id>/reject')
+@login_required
+def reject_booking(booking_id):
+    booking = Booking.query.get_or_404(booking_id)
+    booking.status = 'rejected'
+    db.session.commit()
+    flash('Booking rejected.')
+    return redirect(url_for('admin_dashboard'))
+
 @app.route('/')
 def index():
     all_bikes = Bike.query.all()
@@ -81,6 +99,7 @@ class Booking(db.Model):
     customer_phone = db.Column(db.String(15), nullable=False)
     booking_date = db.Column(db.DateTime, nullable=False)
     status = db.Column(db.String(20), default='pending')
+    bike = db.relationship('Bike', backref='bookings')
 
 with app.app_context():
     db.create_all()
