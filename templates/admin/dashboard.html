@@ -64,9 +64,9 @@
                             {% if booking.status == 'pending' %}
                             <a href="{{ url_for('approve_booking', booking_id=booking.id) }}" class="action-btn approve">Approve</a>
                             <a href="{{ url_for('reject_booking', booking_id=booking.id) }}" class="action-btn reject">Reject</a>
-                            {% else %}
-                            <span style="color:#555">—</span>
                             {% endif %}
+                            <a href="{{ url_for('edit_booking', booking_id=booking.id) }}" class="action-btn edit">Edit</a>
+                            <a href="{{ url_for('delete_booking', booking_id=booking.id) }}" class="action-btn delete" onclick="return confirm('Delete this booking permanently?')">Delete</a>
                         </td>
                     </tr>
                     {% endfor %}

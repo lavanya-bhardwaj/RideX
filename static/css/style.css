@@ -882,3 +882,15 @@ body {
     color: #e63946;
     border: 1px solid #e63946;
 }
+
+.action-btn.edit {
+    background: rgba(255,255,255,0.05);
+    color: #ccc;
+    border: 1px solid #444;
+}
+
+.action-btn.delete {
+    background: rgba(150,0,0,0.15);
+    color: #ff6b6b;
+    border: 1px solid #ff6b6b;
+}

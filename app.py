@@ -70,6 +70,28 @@ def reject_booking(booking_id):
     flash('Booking rejected.')
     return redirect(url_for('admin_dashboard'))
 
+@app.route('/admin/booking/<int:booking_id>/delete')
+@login_required
+def delete_booking(booking_id):
+    booking = Booking.query.get_or_404(booking_id)
+    db.session.delete(booking)
+    db.session.commit()
+    flash('Booking deleted.')
+    return redirect(url_for('admin_dashboard'))
+
+@app.route('/admin/booking/<int:booking_id>/edit', methods=['GET', 'POST'])
+@login_required
+def edit_booking(booking_id):
+    booking = Booking.query.get_or_404(booking_id)
+    if request.method == 'POST':
+        booking.customer_name = request.form['customer_name']
+        booking.customer_phone = request.form['customer_phone']
+        booking.booking_date = datetime.strptime(request.form['booking_date'], '%Y-%m-%d')
+        db.session.commit()
+        flash('Booking updated.')
+        return redirect(url_for('admin_dashboard'))
+    return render_template('admin/edit_booking.html', booking=booking)
+
 @app.route('/')
 def index():
     all_bikes = Bike.query.all()
