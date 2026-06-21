@@ -85,6 +85,37 @@ function scrollFleet(direction) {
         el.addEventListener('mouseleave', () => ring.classList.remove('ring-hover'));
     });
 </script>
+<div id="undoToast" class="undo-toast">
+    <span id="undoMessage">Booking rejected.</span>
+    <button onclick="undoReject()">Undo</button>
+</div>
+<script>
+    let pendingRejectId = null;
+    let rejectTimer = null;
+
+    function rejectWithUndo(bookingId, el) {
+        pendingRejectId = bookingId;
+        const row = el.closest('tr');
+        row.style.opacity = '0.4';
+
+        const toast = document.getElementById('undoToast');
+        toast.classList.add('show');
+
+        rejectTimer = setTimeout(() => {
+            window.location.href = `/admin/booking/${bookingId}/reject`;
+        }, 5000);
+    }
+
+    function undoReject() {
+        clearTimeout(rejectTimer);
+        document.getElementById('undoToast').classList.remove('show');
+
+        const rows = document.querySelectorAll('tr');
+        rows.forEach(r => r.style.opacity = '1');
+
+        pendingRejectId = null;
+    }
+</script>
 <body>
 
     <!-- Navbar -->

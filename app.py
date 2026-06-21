@@ -187,5 +187,26 @@ def booking(bike_id):
 def confirmation():
     return render_template('confirmation.html')
 
+@app.route('/admin/history')
+@login_required
+def history_log():
+    query = Booking.query
+
+    customer = request.args.get('customer')
+    bike_id = request.args.get('bike_id')
+    date = request.args.get('date')
+
+    if customer:
+        query = query.filter(Booking.customer_name.ilike(f'%{customer}%'))
+    if bike_id:
+        query = query.filter(Booking.bike_id == bike_id)
+    if date:
+        query = query.filter(db.func.date(Booking.booking_date) == date)
+
+    all_bookings = query.order_by(Booking.id.desc()).all()
+    all_bikes = Bike.query.all()
+
+    return render_template('admin/history.html', bookings=all_bookings, bikes=all_bikes)
+
 if __name__ == '__main__':
     app.run(debug=True)

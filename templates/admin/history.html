@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="admin-dashboard-section" style="padding-top: 120px;">
+    <div class="container">
+        <p class="hero-tagline">FULL HISTORY</p>
+        <h2 class="mb-4">Booking History</h2>
+
+        <form method="GET" class="history-filters mb-4">
+            <input type="text" name="customer" class="form-control dark-input" placeholder="Search customer name" value="{{ request.args.get('customer', '') }}">
+            
+            <select name="bike_id" class="form-control dark-input">
+                <option value="">All Bikes</option>
+                {% for bike in bikes %}
+                <option value="{{ bike.id }}" {% if request.args.get('bike_id') == bike.id|string %}selected{% endif %}>{{ bike.name }}</option>
+                {% endfor %}
+            </select>
+
+            <input type="date" name="date" class="form-control dark-input" value="{{ request.args.get('date', '') }}">
+
+            <button type="submit" class="btn-primary-red">Search</button>
+            <a href="{{ url_for('history_log') }}" class="action-btn edit">Clear</a>
+        </form>
+
+        <div class="admin-table-wrapper">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Customer</th>
+                        <th>Phone</th>
+                        <th>Bike</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in bookings %}
+                    <tr>
+                        <td>{{ booking.id }}</td>
+                        <td>{{ booking.customer_name }}</td>
+                        <td>{{ booking.customer_phone }}</td>
+                        <td>{{ booking.bike.name }}</td>
+                        <td>{{ booking.booking_date.strftime('%d %b %Y') }}</td>
+                        <td><span class="status-badge {{ booking.status }}">{{ booking.status.upper() }}</span></td>
+                        <td>
+                            <a href="{{ url_for('edit_booking', booking_id=booking.id) }}" class="action-btn edit">Edit</a>
+                            <a href="{{ url_for('delete_booking', booking_id=booking.id) }}" class="action-btn delete" onclick="return confirm('Delete this booking permanently?')">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}
