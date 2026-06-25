@@ -187,5 +187,22 @@ def history_log():
 
     return render_template('admin/history.html', bookings=all_bookings, bikes=all_bikes)
 
+@app.route('/admin/bikes/add', methods=['GET', 'POST'])
+@login_required
+def add_bike():
+    if request.method == 'POST':
+        new_bike = Bike(
+            name=request.form['name'],
+            engine_cc=int(request.form['engine_cc']),
+            price_per_day=float(request.form['price_per_day']),
+            is_available=True,
+            image_file=request.form['image_file']
+        )
+        db.session.add(new_bike)
+        db.session.commit()
+        flash('Bike added successfully!')
+        return redirect(url_for('admin_dashboard'))
+    return render_template('admin/add_bike.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

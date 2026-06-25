@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="admin-dashboard-section" style="padding-top: 120px;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="login-box">
+                    <p class="hero-tagline">ADMIN PANEL</p>
+                    <h2 class="mb-4">Add New Bike</h2>
+                    <form method="POST">
+                        <div class="mb-4">
+                            <label class="form-label">Bike Name</label>
+                            <input type="text" name="name" class="form-control dark-input" placeholder="e.g. Royal Enfield Classic 350" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Engine CC</label>
+                            <input type="number" name="engine_cc" class="form-control dark-input" placeholder="e.g. 350" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Price Per Day (₹)</label>
+                            <input type="number" name="price_per_day" class="form-control dark-input" placeholder="e.g. 1500" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Image Filename</label>
+                            <input type="text" name="image_file" class="form-control dark-input" placeholder="e.g. royal_enfield.jpg">
+                        </div>
+                        <button type="submit" class="btn-primary-red w-100 py-3">Add Bike →</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
