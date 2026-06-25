@@ -61,3 +61,14 @@ python3 app.py
 ```
 
 Create a `.env` file with:
+SECRET_KEY=your_secret_key
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=your_password
+
+---
+
+## 👩‍💻 Built By
+
+**Lavanya Bhardwaj** — BTech CSE @ Sharda University '29
+
+[LinkedIn](https://www.linkedin.com/in/lavanya-bhardwaj-codes) · [GitHub](https://github.com/lavanya-bhardwaj)
