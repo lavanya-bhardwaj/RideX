@@ -1,14 +1,16 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, render_template, request, redirect, url_for, session, flash
+from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from functools import wraps
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = 'cbr_admin_secret_2026'
-ADMIN_USERNAME = 'admin'
-ADMIN_PASSWORD = 'cbr2026'
+app.secret_key = os.getenv('SECRET_KEY')
+ADMIN_USERNAME = os.getenv('ADMIN_USERNAME')
+ADMIN_PASSWORD = os.getenv('ADMIN_PASSWORD')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///bikes.db'
 db = SQLAlchemy(app)
 
