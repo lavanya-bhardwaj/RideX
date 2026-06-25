@@ -10,11 +10,10 @@ A full-stack bike rental web app built with Flask and Python. RideX allows custo
 <img width="2940" height="1661" alt="image" src="https://github.com/user-attachments/assets/3228552d-b939-40c5-9bb8-ccc2e2769caa" />
 <img width="2931" height="1421" alt="image" src="https://github.com/user-attachments/assets/edaafcb3-1a71-4d93-8f90-e1854181dab6" />
 <img width="2932" height="1659" alt="image" src="https://github.com/user-attachments/assets/bbbbc272-f98b-4a33-8e91-7202009f4c1d" />
-<img width="2932" height="1659" alt="image" src="https://github.com/user-attachments/assets/2d8dbad7-5422-477d-9b1c-23e7e177b919" />
-<img width="2932" height="1659" alt="image" src="https://github.com/user-attachments/assets/c4fe383b-fc54-42ec-8c45-6253881107c7" />
-<img width="2932" height="1659" alt="image" src="https://github.com/user-attachments/assets/c5c71914-7a8f-44a2-9374-30a5a3a73884" />
+<img width="2933" height="1658" alt="image" src="https://github.com/user-attachments/assets/aaca9ed4-2ce5-4ead-a1b6-b49f1894be06" />
 <img width="2934" height="1661" alt="image" src="https://github.com/user-attachments/assets/b7927682-2b63-4ab1-a481-5177cb3c7a09" />
 <img width="2931" height="1660" alt="image" src="https://github.com/user-attachments/assets/f98ef7b1-698e-4721-ab7c-4c9f38455a2c" />
+<img width="2933" height="1660" alt="image" src="https://github.com/user-attachments/assets/dae79689-534b-4cbb-8112-88eab682eb18" />
 
 
 
