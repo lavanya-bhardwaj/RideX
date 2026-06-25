@@ -11,7 +11,11 @@ app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY')
 ADMIN_USERNAME = os.getenv('ADMIN_USERNAME')
 ADMIN_PASSWORD = os.getenv('ADMIN_PASSWORD')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///bikes.db'
+
+uri = os.getenv('DATABASE_URL', 'sqlite:///bikes.db')
+if uri.startswith('postgres://'):
+    uri = uri.replace('postgres://', 'postgresql://', 1)
+app.config['SQLALCHEMY_DATABASE_URI'] = uri
 db = SQLAlchemy(app)
 
 def login_required(f):
