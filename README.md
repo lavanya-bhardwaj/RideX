@@ -12,8 +12,8 @@ A full-stack bike rental web app built with Flask and Python. RideX allows custo
 <img width="2932" height="1659" alt="image" src="https://github.com/user-attachments/assets/bbbbc272-f98b-4a33-8e91-7202009f4c1d" />
 <img width="2933" height="1658" alt="image" src="https://github.com/user-attachments/assets/aaca9ed4-2ce5-4ead-a1b6-b49f1894be06" />
 <img width="2932" height="1659" alt="image" src="https://github.com/user-attachments/assets/a32cc913-0ef7-40ac-b1c0-566ced7fbc53" />
-<img width="2934" height="1661" alt="image" src="https://github.com/user-attachments/assets/b7927682-2b63-4ab1-a481-5177cb3c7a09" />
 <img width="2931" height="1579" alt="image" src="https://github.com/user-attachments/assets/93dc00f5-8666-4bdd-b7a6-08a6e69023a1" />
+<img width="2934" height="1661" alt="image" src="https://github.com/user-attachments/assets/b7927682-2b63-4ab1-a481-5177cb3c7a09" />
 <img width="2931" height="1660" alt="image" src="https://github.com/user-attachments/assets/f98ef7b1-698e-4721-ab7c-4c9f38455a2c" />
 <img width="2933" height="1660" alt="image" src="https://github.com/user-attachments/assets/dae79689-534b-4cbb-8112-88eab682eb18" />
 
